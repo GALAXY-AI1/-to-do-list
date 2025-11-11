@@ -1,14 +1,28 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .list-group-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: background-color 0.2s, transform 0.2s;
 }
 
-.list-group-item.completed {
+.list-group-item:hover {
+    background-color: #f8f9fa;
+    transform: translateX(5px);
+}
+
+.list-group-item.completed span {
     text-decoration: line-through;
     opacity: 0.6;
+}
+
+.btn-sm {
+    margin-left: 5px;
+}
+
+h1 {
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
