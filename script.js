@@ -2,7 +2,7 @@ const taskInput = document.getElementById('taskInput');
 const addBtn = document.getElementById('addBtn');
 const taskList = document.getElementById('taskList');
 
-// Tambah tugas
+// Tambah tugas baru
 addBtn.addEventListener('click', () => {
     const taskText = taskInput.value.trim();
     if(taskText !== '') {
@@ -11,8 +11,8 @@ addBtn.addEventListener('click', () => {
         li.innerHTML = `
             <span>${taskText}</span>
             <div>
-                <button class="btn btn-success btn-sm completeBtn">✔</button>
-                <button class="btn btn-danger btn-sm deleteBtn">✖</button>
+                <button class="btn btn-success btn-sm completeBtn" title="Selesai"><i class="bi bi-check-lg"></i></button>
+                <button class="btn btn-danger btn-sm deleteBtn" title="Hapus"><i class="bi bi-trash"></i></button>
             </div>
         `;
         taskList.appendChild(li);
@@ -22,12 +22,19 @@ addBtn.addEventListener('click', () => {
 
 // Tandai selesai atau hapus
 taskList.addEventListener('click', (e) => {
-    if(e.target.classList.contains('completeBtn')){
+    if(e.target.closest('.completeBtn')){
         const li = e.target.closest('li');
         li.classList.toggle('completed');
     }
-    if(e.target.classList.contains('deleteBtn')){
+    if(e.target.closest('.deleteBtn')){
         const li = e.target.closest('li');
         li.remove();
+    }
+});
+
+// Enter key untuk tambah tugas
+taskInput.addEventListener('keypress', (e) => {
+    if(e.key === 'Enter'){
+        addBtn.click();
     }
 });
